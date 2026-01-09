@@ -1,7 +1,0 @@
-
-[dev]
-ruff
-black
-isort
-pytest
-pytest-cov
