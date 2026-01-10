@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: buergerregister
+Version: 0.1.0
+Summary: Mini-Verwaltungsanwendung zur Bürgerverwaltung
+Author: Vorname Nachname
+Requires-Python: >=3.10
+Provides-Extra: dev
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
