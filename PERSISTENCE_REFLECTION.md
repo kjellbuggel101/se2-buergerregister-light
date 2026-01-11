@@ -1,35 +1,39 @@
 # Reflexion – Persistenzmodul (JSON)
 
-## Nutzen eines Persistenzmoduls
-Ein Persistenzmodul ermöglicht es, Daten über die Laufzeit eines Programms hinaus zu speichern.
+Nutzen eines Persistenzmoduls
 
-## Eignung von JSON
-JSON ist leichtgewichtig, gut lesbar und ohne zusätzliche Infrastruktur nutzbar.
+Ein Persistenzmodul sorgt dafür, dass Daten nicht nur während der Programmlaufzeit existieren, sondern dauerhaft gespeichert werden. Im Bürgerregister bedeutet das, dass einmal erfasste Personendaten auch nach einem Neustart der Anwendung wieder verfügbar sind. Gleichzeitig trennt ein eigenes Persistenzmodul fachliche Logik von technischer Speicherung, was den Code übersichtlicher und wartbarer macht.
 
-## Kritische Randfälle
-Fehlende, leere oder fehlerhafte Dateien müssen robust behandelt werden.
+Eignung von JSON
 
-## Weiterentwicklung
-In größeren Systemen würde eine Datenbank verwendet werden.
+JSON ist für kleine Projekte gut geeignet, da es leichtgewichtig, gut lesbar und ohne zusätzliche Infrastruktur nutzbar ist. Die Struktur passt gut zu einfachen Datenmodellen wie Personenobjekten, und die Verarbeitung ist in Python ohne großen Aufwand möglich. Für Lernzwecke ist JSON daher eine praktische und verständliche Lösung.
 
-## Abwärtskompatibilität
-Durch Versionierung und Migrationen.
+Kritische Randfälle
 
+Wichtige Randfälle sind fehlende, leere oder fehlerhafte Dateien sowie fehlende Zugriffsrechte. Das Persistenzmodul muss solche Situationen erkennen und so behandeln, dass das Programm nicht abstürzt, sondern zum Beispiel mit einer leeren Datenbasis weiterarbeitet oder verständliche Fehlermeldungen ausgibt.
 
-Im Rahmen dieser Prüfungsleistung wurde deutlich, wie wichtig eine systematische Qualitätssicherung auch bei vergleichsweise kleinen Softwareprojekten ist. Durch den Einsatz von Unit-Tests konnten zentrale fachliche Anforderungen des Bürgerregisters überprüft und abgesichert werden, insbesondere in Bezug auf Validierung, Duplikaterkennung und Persistenz. Die Tests haben dabei nicht nur zur Fehlererkennung beigetragen, sondern auch das Vertrauen in die Korrektheit von Änderungen erhöht.
+Weiterentwicklung
 
-Die Analyse der Testabdeckung zeigte, dass ein großer Teil der fachlich relevanten Logik durch Tests abgedeckt ist. Gleichzeitig wurde deutlich, dass hohe Coverage-Werte allein keine Garantie für gute Softwarequalität darstellen. Entscheidend ist vielmehr, ob die richtigen Szenarien getestet werden und ob Rand- und Fehlerfälle sinnvoll berücksichtigt sind. Diese Erkenntnis führte zu einer bewussteren Bewertung der Testergebnisse.
+Für größere Systeme wäre JSON nur begrenzt geeignet. Mit wachsender Datenmenge steigen Ladezeiten und Fehleranfälligkeit. In solchen Fällen würde man auf eine Datenbanklösung umsteigen, die besser mit großen Datenmengen und parallelen Zugriffen umgehen kann.
 
-Ergänzend verdeutlichte die Betrachtung einfacher Code-Metriken, dass insbesondere Validierungs- und Persistenzlogik eine erhöhte Komplexität aufweisen. Diese Komplexität ist fachlich nachvollziehbar, da hier viele Fehlerfälle abgefangen werden müssen, stellt jedoch langfristig einen Ansatzpunkt für strukturelle Verbesserungen dar. Insgesamt hat die Prüfungsleistung gezeigt, dass Qualitätssicherung nicht als nachgelagerter Schritt, sondern als integraler Bestandteil des Softwareentwicklungsprozesses zu verstehen ist.
+Abwärtskompatibilität
+
+Damit alte Daten auch nach Änderungen am Datenmodell noch nutzbar bleiben, sollten gespeicherte Daten versioniert werden. Beim Laden kann dann geprüft werden, ob eine Migration nötig ist, um alte Formate in das neue Datenmodell zu überführen.
 
 
-Qualitätssicherung und Clean Code
+In dieser Prüfungsleistung habe ich ein bestehendes Projekt schrittweise weiterentwickelt und dabei besonderen Wert auf Codequalität, Nachvollziehbarkeit und professionelle Arbeitsweise gelegt. Ausgangspunkt war ein funktionierendes Bürgerregister-Projekt, das bereits grundlegende Funktionen wie Anlegen, Suchen und Validieren von Personen enthielt. Mein Ziel war es nicht, neue Features zu bauen, sondern den vorhandenen Code systematisch zu verbessern und ihn näher an gängige Standards aus dem Software Engineering heranzuführen.
 
-Zur Sicherstellung der Softwarequalität wurden im Repository automatisierte Prüfmechanismen über GitHub Actions eingerichtet. Ein Continuous-Integration-Workflow mit dem Namen „CI“ führt bei jedem Push auf den Hauptbranch sowie bei Pull Requests alle Unit-Tests mittels pytest aus. Dadurch wird gewährleistet, dass Änderungen am Code keine bestehenden Funktionalitäten unbeabsichtigt beeinträchtigen und die fachlichen Anforderungen des Bürgerregisters dauerhaft eingehalten werden.
+Zunächst habe ich den Code inhaltlich überprüft und auf Lesbarkeit, Struktur und Verständlichkeit geachtet. Dabei habe ich unter anderem Funktions- und Variablennamen vereinheitlicht und aussagekräftiger gestaltet, unnötige oder doppelte Logik reduziert und die Struktur einzelner Dateien übersichtlicher gemacht. Besonders wichtig war mir, dass man auch ohne tiefes Vorwissen schnell erkennt, welche Aufgabe eine Funktion erfüllt und wie der Datenfluss im Programm abläuft.
 
-Ergänzend dazu ist mit CodeQL ein automatisches Security-Scanning aktiviert, das den Quellcode regelmäßig auf potenzielle Schwachstellen und typische Fehlerklassen analysiert. Diese Kombination aus funktionalen Tests und statischer Analyse stellt sicher, dass sowohl funktionale Korrektheit als auch ausgewählte nicht-funktionale Qualitätsaspekte kontinuierlich überprüft werden.
+Parallel dazu habe ich die vorhandenen Tests genutzt, um jede Änderung abzusichern. Nach jedem größeren Schritt habe ich die Tests lokal mit pytest ausgeführt, um sicherzustellen, dass mein Refactoring keine fachlichen Fehler verursacht. Dadurch konnte ich sicher arbeiten, ohne Angst zu haben, unbemerkt Funktionalität zu zerstören. Diese testgetriebene Kontrolle hat mir gezeigt, wie wichtig automatisierte Tests für sauberes Refactoring sind.
 
-Auf die Einführung einer Branch-Protection-Regel mit verpflichtenden Status-Checks wurde bewusst verzichtet, da es sich um ein Einzelprojekt ohne kollaborativen Merge-Prozess handelt. In einem Teamkontext würde eine solche Regel die Qualitätssicherung zusätzlich unterstützen, indem fehlerhafte Änderungen vor dem Merge technisch blockiert werden. Für den gegebenen Rahmen bietet die bestehende Kombination aus CI-Workflow und Security-Scanning jedoch eine angemessene, nachvollziehbare und reproduzierbare Qualitätssicherung.
+Im nächsten Schritt habe ich Werkzeuge zur automatischen Codeprüfung eingeführt. Dazu habe ich das Tool ruff eingebunden, das Stilregeln, typische Fehlerquellen und Import-Strukturen überprüft. Anfangs gab es viele Hinweise, vor allem zu unsauberen Imports und zur Reihenfolge von Anweisungen. Diese Meldungen habe ich systematisch abgearbeitet, indem ich die betroffenen Dateien angepasst, alte Pfad-Tricks entfernt und die Tests so umgebaut habe, dass sie sauber über das installierte Paket importieren. Dadurch ist der Code nicht nur regelkonform, sondern auch deutlich verständlicher und professioneller geworden.
+
+Ein weiterer wichtiger Teil war die Einführung von Continuous Integration über GitHub Actions. Ich habe einen Workflow erstellt, der bei jedem Push und bei Pull Requests automatisch ausgeführt wird. Dieser Workflow installiert das Projekt, führt ruff zur Stil- und Qualitätsprüfung aus und startet anschließend alle Tests mit pytest. So wird jede Änderung automatisch überprüft, ohne dass man manuell daran denken muss. Fehler werden sofort sichtbar, was die Qualität langfristig absichert.
+
+Um strukturiert zu arbeiten, habe ich meine Änderungen in einem eigenen Branch durchgeführt und über einen Pull Request in den Hauptbranch integriert. Dabei habe ich darauf geachtet, dass alle Checks grün sind, bevor gemerged wurde. Dieser Ablauf entspricht dem Vorgehen in professionellen Softwareprojekten und hat mir gezeigt, wie wichtig klare Arbeitsabläufe, Reviews und automatisierte Prüfungen sind.
+
+Zusammenfassend habe ich gelernt, dass „Clean Code“ nicht nur aus schöner Formatierung besteht, sondern aus klaren Namen, einfacher Struktur, nachvollziehbarer Logik und guter Absicherung durch Tests. Durch den Einsatz von Linting-Tools, automatisierten Tests und Continuous Integration habe ich erlebt, wie technische Qualität systematisch unterstützt werden kann. Die Arbeit an diesem Projekt hat mir gezeigt, wie aus einem funktionierenden, aber eher einfachen Code schrittweise ein gut strukturierter, geprüfter und professionell verwalteter Softwarestand entstehen kann.
 
 
 Bild von allen Workflows (Alle sind Grün)
