@@ -6,7 +6,6 @@ register = Buergerregister()
 print("\033[92mBürgerregister CLI gestartet.\033[0m")
 
 
-
 # ---------------------------------------------------------
 # Tabellenanzeige
 # ---------------------------------------------------------
@@ -16,15 +15,19 @@ def drucke_tabelle(personen):
         return
 
     print("\n" + "-" * 70)
-    print("{:<15} {:<15} {:<12} {:<20}".format(
-        "Vorname", "Nachname", "Geburtsjahr", "Wohnort"
-    ))
+    print(
+        "{:<15} {:<15} {:<12} {:<20}".format(
+            "Vorname", "Nachname", "Geburtsjahr", "Wohnort"
+        )
+    )
     print("-" * 70)
 
     for p in personen:
-        print("{:<15} {:<15} {:<12} {:<20}".format(
-            p.vorname, p.nachname, p.geburtsjahr, p.wohnort
-        ))
+        print(
+            "{:<15} {:<15} {:<12} {:<20}".format(
+                p.vorname, p.nachname, p.geburtsjahr, p.wohnort
+            )
+        )
 
     print("-" * 70)
 
@@ -83,7 +86,7 @@ def cli():
             personen = register.list()
             drucke_tabelle(personen)
 
-         # 🔹 Tambahkan jumlah total data
+            # 🔹 Tambahkan jumlah total data
             print(f"\nGesamtanzahl: {register.count()}")
 
         # ---------------------------------------

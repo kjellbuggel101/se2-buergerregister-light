@@ -36,8 +36,7 @@ class Buergerregister:
         nach = p.nachname.lower()
 
         if any(
-            e.vorname.strip().lower() == vor and
-            e.nachname.strip().lower() == nach
+            e.vorname.strip().lower() == vor and e.nachname.strip().lower() == nach
             for e in self._personen
         ):
             print("\033[91mWarnung: Duplikat gefunden.\033[0m")
@@ -56,10 +55,7 @@ class Buergerregister:
         # 🔹 Normalisierung user input
         key = nachname.strip().lower()
 
-        return [
-            p for p in self._personen
-            if p.nachname.strip().lower() == key
-        ]
+        return [p for p in self._personen if p.nachname.strip().lower() == key]
 
     def count(self) -> int:
         """Gibt die Gesamtanzahl der gespeicherten Personen zurück."""
@@ -77,10 +73,7 @@ class Buergerregister:
         nach = nachname.strip().lower()
 
         for p in self._personen:
-            if (
-                p.vorname.strip().lower() == vor
-                and p.nachname.strip().lower() == nach
-            ):
+            if p.vorname.strip().lower() == vor and p.nachname.strip().lower() == nach:
                 self._personen.remove(p)
                 return True
 
