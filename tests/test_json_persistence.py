@@ -1,8 +1,9 @@
 import os
 import tempfile
-from buergerregister.register import Buergerregister
-from buergerregister.models import Person
+
 from buergerregister.json_persistence import JsonPersistence
+from buergerregister.models import Person
+from buergerregister.register import Buergerregister
 
 
 def test_save_and_load_roundtrip():
