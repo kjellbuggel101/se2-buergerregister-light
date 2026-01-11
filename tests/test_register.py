@@ -1,22 +1,7 @@
 from __future__ import annotations
 
-import os
-import sys
-
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-sys.path.insert(0, ROOT)
-# ---------------------------------------------------------
-# Projekt-Root und src/ zum Python-Pfad hinzufügen,
-# damit wir das Paket aus src importieren können
-# ---------------------------------------------------------
-
-# docs/demoproto/demo_add_person.py
-# -> parents[0] = demoproto
-# -> parents[1] = docs
-# -> parents[2] = Projekt-Root
-
-from src.buergerregister.models import Person
-from src.buergerregister.register import Buergerregister
+from buergerregister.models import Person
+from buergerregister.register import Buergerregister
 
 
 def test_add_valid_person():
@@ -57,7 +42,7 @@ def test_list_returns_copy():
     lst = reg.list()
 
     assert len(lst) == 1
-    assert lst is not reg._personen   # muss copy
+    assert lst is not reg._personen  # muss copy
     assert lst[0] == p
 
 
@@ -104,4 +89,3 @@ def test_clear_all():
 
     reg.clear_all()
     assert reg.count() == 0
-

@@ -1,7 +1,8 @@
 import json
 import os
-from buergerregister.register import Buergerregister
+
 from buergerregister.models import Person
+from buergerregister.register import Buergerregister
 from buergerregister.validation import validiere_person
 
 
@@ -10,12 +11,14 @@ class JsonPersistence:
     def save(register: Buergerregister, filename: str) -> None:
         data = []
         for person in register.list():
-            data.append({
-                "vorname": person.vorname,
-                "nachname": person.nachname,
-                "geburtsjahr": person.geburtsjahr,
-                "wohnort": person.wohnort
-            })
+            data.append(
+                {
+                    "vorname": person.vorname,
+                    "nachname": person.nachname,
+                    "geburtsjahr": person.geburtsjahr,
+                    "wohnort": person.wohnort,
+                }
+            )
 
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
@@ -46,7 +49,7 @@ class JsonPersistence:
                     entry["vorname"],
                     entry["nachname"],
                     entry["geburtsjahr"],
-                    entry["wohnort"]
+                    entry["wohnort"],
                 )
                 register.add(person)
             except Exception:
