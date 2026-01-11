@@ -32,6 +32,13 @@ Ergänzend dazu ist mit CodeQL ein automatisches Security-Scanning aktiviert, da
 Auf die Einführung einer Branch-Protection-Regel mit verpflichtenden Status-Checks wurde bewusst verzichtet, da es sich um ein Einzelprojekt ohne kollaborativen Merge-Prozess handelt. In einem Teamkontext würde eine solche Regel die Qualitätssicherung zusätzlich unterstützen, indem fehlerhafte Änderungen vor dem Merge technisch blockiert werden. Für den gegebenen Rahmen bietet die bestehende Kombination aus CI-Workflow und Security-Scanning jedoch eine angemessene, nachvollziehbare und reproduzierbare Qualitätssicherung.
 
 
+Bild von allen Workflows (Alle sind Grün)
+
+<img width="1838" height="763" alt="image" src="https://github.com/user-attachments/assets/611bbd50-f165-4789-a5df-8baf950c03fb" />
+
+
+
+
 
 
 
@@ -39,4 +46,8 @@ Auf die Einführung einer Branch-Protection-Regel mit verpflichtenden Status-Che
 Bild vom Workflow (Alles Grün)
 
 <img width="1863" height="762" alt="image" src=  "https://github.com/user-attachments/assets/47dfe0e9-9620-48ba-bbe1-cb510505e13a" />
+
+
+
+
 
