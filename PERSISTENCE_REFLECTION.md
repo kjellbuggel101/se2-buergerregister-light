@@ -30,3 +30,13 @@ Zur Sicherstellung der Softwarequalität wurden im Repository automatisierte Pr�
 Ergänzend dazu ist mit CodeQL ein automatisches Security-Scanning aktiviert, das den Quellcode regelmäßig auf potenzielle Schwachstellen und typische Fehlerklassen analysiert. Diese Kombination aus funktionalen Tests und statischer Analyse stellt sicher, dass sowohl funktionale Korrektheit als auch ausgewählte nicht-funktionale Qualitätsaspekte kontinuierlich überprüft werden.
 
 Auf die Einführung einer Branch-Protection-Regel mit verpflichtenden Status-Checks wurde bewusst verzichtet, da es sich um ein Einzelprojekt ohne kollaborativen Merge-Prozess handelt. In einem Teamkontext würde eine solche Regel die Qualitätssicherung zusätzlich unterstützen, indem fehlerhafte Änderungen vor dem Merge technisch blockiert werden. Für den gegebenen Rahmen bietet die bestehende Kombination aus CI-Workflow und Security-Scanning jedoch eine angemessene, nachvollziehbare und reproduzierbare Qualitätssicherung.
+
+
+
+
+
+
+Bild vom Workflow (Alles Grün)
+
+<img width="1863" height="762" alt="image" src=  "https://github.com/user-attachments/assets/47dfe0e9-9620-48ba-bbe1-cb510505e13a" />
+
